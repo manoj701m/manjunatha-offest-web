@@ -1,0 +1,206 @@
+/* ============================================================
+   Manjunatha Offset Printers — Main Stylesheet
+   Molakalmuru, Chitradurga District, Karnataka
+   Est. 1995
+   ============================================================ */
+
+* { box-sizing: border-box; }
+body, html { font-family: 'DM Sans', sans-serif; }
+h1, h2, .serif { font-family: 'DM Serif Display', serif; }
+
+:root {
+  --bg-primary:    #0a0a0a;
+  --bg-secondary:  #141414;
+  --bg-card:       #1a1a1a;
+  --text-primary:  #ffffff;
+  --text-secondary:#9ca3af;
+  --text-muted:    #6b7280;
+  --accent:        #c2410c;
+  --accent-dark:   #9a3412;
+  --accent-light:  #ea580c;
+  --gold:          #d97706;
+  --cyan:          #06b6d4;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ── Grid background ─────────────────────────────────────── */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(194, 65, 12, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(194, 65, 12, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Floating ink particles ──────────────────────────────── */
+@keyframes ink-float {
+  0%   { transform: translate(0, 0) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.4; }
+  100% { transform: translate(-80px, -100vh) rotate(180deg); opacity: 0; }
+}
+@keyframes ink-float-alt {
+  0%   { transform: translate(0, 0) rotate(0deg);  opacity: 0; }
+  10%  { opacity: 0.5; }
+  90%  { opacity: 0.3; }
+  100% { transform: translate(60px, -100vh) rotate(-120deg); opacity: 0; }
+}
+.ink-particle { position: absolute; pointer-events: none; background: #c2410c; border-radius: 50%; }
+.p1  { width:3px; height:3px; left:5%;  top:100%; animation: ink-float     22s linear infinite; animation-delay:0s;  }
+.p2  { width:2px; height:2px; left:12%; top:100%; animation: ink-float-alt  28s linear infinite; animation-delay:3s;  }
+.p3  { width:3px; height:3px; left:22%; top:100%; animation: ink-float     25s linear infinite; animation-delay:6s;  }
+.p4  { width:2px; height:2px; left:33%; top:100%; animation: ink-float-alt  30s linear infinite; animation-delay:1s;  }
+.p5  { width:3px; height:3px; left:44%; top:100%; animation: ink-float     24s linear infinite; animation-delay:4s;  }
+.p6  { width:2px; height:2px; left:55%; top:100%; animation: ink-float-alt  27s linear infinite; animation-delay:8s;  }
+.p7  { width:3px; height:3px; left:66%; top:100%; animation: ink-float     26s linear infinite; animation-delay:2s;  }
+.p8  { width:2px; height:2px; left:77%; top:100%; animation: ink-float-alt  29s linear infinite; animation-delay:5s;  }
+.p9  { width:3px; height:3px; left:88%; top:100%; animation: ink-float     23s linear infinite; animation-delay:7s;  }
+.p10 { width:2px; height:2px; left:95%; top:100%; animation: ink-float-alt  31s linear infinite; animation-delay:2s;  }
+.p11 { width:2px; height:2px; left:8%;  top:100%; animation: ink-float     28s linear infinite; animation-delay:9s;  }
+.p12 { width:3px; height:3px; left:18%; top:100%; animation: ink-float-alt  25s linear infinite; animation-delay:11s; }
+.p13 { width:2px; height:2px; left:38%; top:100%; animation: ink-float     32s linear infinite; animation-delay:0s;  }
+.p14 { width:3px; height:3px; left:58%; top:100%; animation: ink-float-alt  24s linear infinite; animation-delay:13s; }
+.p15 { width:2px; height:2px; left:78%; top:100%; animation: ink-float     27s linear infinite; animation-delay:6s;  }
+
+/* ── Fade-in scroll animations ───────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-play-state: paused;
+}
+.fade-in.visible { animation-play-state: running; }
+.d1 { animation-delay: 0.1s; }
+.d2 { animation-delay: 0.2s; }
+.d3 { animation-delay: 0.3s; }
+.d4 { animation-delay: 0.4s; }
+.d5 { animation-delay: 0.5s; }
+.d6 { animation-delay: 0.6s; }
+
+/* ── Glow pulse ──────────────────────────────────────────── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.6; }
+}
+.pulse-glow { animation: pulse-glow 5s ease-in-out infinite; }
+
+/* ── Slow rotate (hero ring) ─────────────────────────────── */
+@keyframes slow-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.slow-rotate { animation: slow-rotate 40s linear infinite; }
+
+/* ── Print rule shimmer (top bar) ────────────────────────── */
+.print-rule {
+  height: 3px;
+  background: linear-gradient(90deg, #c2410c, #ea580c, #d97706, #c2410c);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 0%   0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* ── Section top border ──────────────────────────────────── */
+.gradient-border-top { position: relative; }
+.gradient-border-top::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(194, 65, 12, 0.4), transparent);
+}
+
+/* ── Navigation links ────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  transition: color 0.3s;
+  color: #9ca3af;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: #c2410c;
+  transition: width 0.3s ease;
+}
+.nav-link:hover { color: #fff; }
+.nav-link:hover::after { width: 100%; }
+
+/* ── Mobile menu ─────────────────────────────────────────── */
+#mobile-menu { display: none; }
+#mobile-menu.open { display: block; }
+
+/* ── Service / gallery cards ─────────────────────────────── */
+.service-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(194, 65, 12, 0.35);
+  box-shadow: 0 20px 60px rgba(194, 65, 12, 0.08);
+}
+.service-icon { transition: transform 0.4s ease; }
+.service-card:hover .service-icon { transform: scale(1.1) rotate(-3deg); }
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn-primary {
+  position: relative; overflow: hidden;
+  transition: all 0.35s ease;
+  background: #c2410c;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute; top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  transition: left 0.5s ease;
+}
+.btn-primary:hover::before { left: 100%; }
+.btn-primary:hover {
+  background: #ea580c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(194, 65, 12, 0.4);
+}
+
+.btn-whatsapp {
+  background: #16a34a;
+  transition: all 0.35s ease;
+}
+.btn-whatsapp:hover {
+  background: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(22, 163, 74, 0.4);
+}
+
+/* ── Badge pill ──────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px;
+  background: rgba(194, 65, 12, 0.12);
+  border: 1px solid rgba(194, 65, 12, 0.25);
+  border-radius: 100px;
+  color: #fb923c;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Logo mark spin ──────────────────────────────────────── */
+.logo-mark { transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.logo-mark:hover { transform: rotate(360deg) scale(1.1); }
+
+/* ── Kannada font hint ───────────────────────────────────── */
+.kannada { font-family: 'Noto Sans Kannada', 'DM Sans', sans-serif; }
+
+/* ── Form inputs ─────────────────────────────────────────── */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #c2410c;
+  box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.15);
+}
